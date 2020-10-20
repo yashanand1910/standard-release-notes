@@ -13,7 +13,7 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 
 - #### `version`
     - **Required**
-    - Name of the version in the changelog. (e.g. `v1.2.1-beta.3`)
+    - Name of the version in the changelog. (e.g. *v1.2.1-beta.3*)
 
 ### Outputs
 
