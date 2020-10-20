@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.3](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.2...v1.1.3) (2020-10-20)
+
+
+### Bug Fixes
+
+* main in action.yml ([77a00d5](https://www.github.com/yashanand1910/standard-release-notes/commit/77a00d5965e1922e1fab6608e4dff3d8932c3bf1))
+
 ### [1.1.2](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.1...v1.1.2) (2020-10-20)
 
 
