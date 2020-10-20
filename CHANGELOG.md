@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.2](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.1...v1.1.2) (2020-10-20)
+
+
+### Bug Fixes
+
+* module import issue ([46460f0](https://www.github.com/yashanand1910/standard-release-notes/commit/46460f018ccf23ebdc02464d8fd00ba8eea4fea0))
+
 ### [1.1.1](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.0...v1.1.1) (2020-10-20)
 
 
