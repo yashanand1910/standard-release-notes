@@ -1,5 +1,5 @@
-const { getReleaseNotesFromPath } = require('./release-notes');
-const core = require('@actions/core');
+import { getReleaseNotesFromPath } from './release-notes';
+import core from '@actions/core';
 
 /**
  * Run action

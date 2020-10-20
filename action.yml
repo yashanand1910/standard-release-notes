@@ -17,4 +17,4 @@ outputs:
     description: The release notes for a version.
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'

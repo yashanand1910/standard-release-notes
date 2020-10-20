@@ -1,12 +1,70 @@
 module.exports =
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 932:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 603:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const { getReleaseNotesFromPath } = __webpack_require__(571);
-const core = __webpack_require__(186);
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __webpack_require__(747);
+
+// CONCATENATED MODULE: ./release-notes.js
+
+
+/**
+ * Extract release notes from any multi-line string
+ * @param {string} content
+ * @param {string} version
+ * @returns {*}
+ */
+const extractReleaseNotes = (content, version) => {
+
+  version = version.replace(/^v/, '');
+  const regExp = new RegExp(
+    `## v?\\[?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### \\[?[0-9]+\\.|($(?![\r\n])))`,
+    'ms'
+  );
+  const match = content.match(regExp);
+
+  if (!match) {
+    throw Error('Could not find release notes for specified version');
+  }
+
+  return match[1].trim();
+
+}
+
+/**
+ * Get release notes from a file path
+ * @param {string} path - Path to file
+ * @param {string} version - e.g. v1.2.0-beta.2
+ * @returns {Promise<string>} - Release notes
+ */
+const getReleaseNotesFromPath = async (path, version) => {
+  try {
+
+    const content = await external_fs_.promises.readFile(path, 'utf-8');
+
+    return extractReleaseNotes(content, version);
+
+  } catch (error) {
+
+    throw new Error(`[get release notes] ${error.message}`);
+
+  }
+}
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __webpack_require__(186);
+var core_default = /*#__PURE__*/__webpack_require__.n(core);
+
+// CONCATENATED MODULE: ./index.js
+
+
 
 /**
  * Run action
@@ -16,8 +74,8 @@ const run = async () => {
   try {
 
     // Get inputs
-    const changelogPath = core.getInput('changelog_path');
-    const version = core.getInput('version');
+    const changelogPath = core_default().getInput('changelog_path');
+    const version = core_default().getInput('version');
     console.info(`[input] Changelog path: ${changelogPath}`);
 
     // Process
@@ -25,12 +83,12 @@ const run = async () => {
     console.info(`[process] Release notes retrieved`);
 
     // Set outputs
-    core.setOutput('release-notes', releaseNotes);
+    core_default().setOutput('release-notes', releaseNotes);
 
   } catch (error) {
 
     console.error(error.message);
-    core.setFailed(error.message);
+    core_default().setFailed(error.message);
 
   }
 }
@@ -43,7 +101,6 @@ run().then();
 /***/ 351:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-"use strict";
 
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
@@ -129,7 +186,6 @@ function escapeProperty(s) {
 /***/ 186:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -374,7 +430,6 @@ exports.getState = getState;
 /***/ 717:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-"use strict";
 
 // For internal use, subject to change.
 var __importStar = (this && this.__importStar) || function (mod) {
@@ -410,7 +465,6 @@ exports.issueCommand = issueCommand;
 /***/ 278:
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -433,67 +487,9 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
-/***/ 571:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "extractReleaseNotes": () => /* binding */ extractReleaseNotes,
-/* harmony export */   "getReleaseNotesFromPath": () => /* binding */ getReleaseNotesFromPath
-/* harmony export */ });
-const fs = __webpack_require__(747);
-
-/**
- * Extract release notes from any multi-line string
- * @param {string} content
- * @param {string} version
- * @returns {*}
- */
-const extractReleaseNotes = (content, version) => {
-
-  version = version.replace(/^v/, '');
-  const regExp = new RegExp(
-    `## v?\\[?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### \\[?[0-9]+\\.|($(?![\r\n])))`,
-    'ms'
-  );
-  const match = content.match(regExp);
-
-  if (!match) {
-    throw Error('Could not find release notes for specified version');
-  }
-
-  return match[1].trim();
-
-}
-
-/**
- * Get release notes from a file path
- * @param {string} path - Path to file
- * @param {string} version - e.g. v1.2.0-beta.2
- * @returns {Promise<string>} - Release notes
- */
-const getReleaseNotesFromPath = async (path, version) => {
-  try {
-
-    const content = await fs.promises.readFile(path, 'utf-8');
-
-    return extractReleaseNotes(content, version);
-
-  } catch (error) {
-
-    throw new Error(`[get release notes] ${error.message}`);
-
-  }
-}
-
-
-/***/ }),
-
 /***/ 747:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("fs");
 
 /***/ }),
@@ -501,7 +497,6 @@ module.exports = require("fs");
 /***/ 87:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("os");
 
 /***/ }),
@@ -509,7 +504,6 @@ module.exports = require("os");
 /***/ 622:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("path");
 
 /***/ })
@@ -546,6 +540,18 @@ module.exports = require("path");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -580,6 +586,6 @@ module.exports = require("path");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(932);
+/******/ 	return __webpack_require__(603);
 /******/ })()
 ;

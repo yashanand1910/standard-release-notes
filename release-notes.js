@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { promises as fs } from 'fs';
 
 /**
  * Extract release notes from any multi-line string
@@ -32,7 +32,7 @@ export const extractReleaseNotes = (content, version) => {
 export const getReleaseNotesFromPath = async (path, version) => {
   try {
 
-    const content = await fs.promises.readFile(path, 'utf-8');
+    const content = await fs.readFile(path, 'utf-8');
 
     return extractReleaseNotes(content, version);
 
