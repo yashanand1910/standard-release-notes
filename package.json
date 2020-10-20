@@ -36,7 +36,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && git add dist/"
+      "pre-commit": "npm run build && git add dist/",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
