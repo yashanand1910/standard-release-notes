@@ -7,22 +7,34 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 
 ### Inputs
 
-#### `changelog-path`
-**Optional** Path of the changelog file (relative to root). Default is `./CHANGELOG.md`.
+- #### `changelog-path`
+    - **Optional**
+    - Path of the changelog file (relative to root). Default is `./CHANGELOG.md`.
 
-#### `version`
-**Required** Name of the version in the changelog. (e.g. `v1.2.1-beta.3`)
+- #### `version`
+    - **Required**
+    - Name of the version in the changelog. (e.g. `v1.2.1-beta.3`)
 
 ### Outputs
 
-#### `release-notes`
-The release notes for a version.
+- #### `release-notes`
+    - The release notes for a version.
 
 ### Example
 
 ```yaml
+# Get the release notes. Set a convenient 'id' for accessing later.
+
 uses: actions/standard-release-notes@latest
+id: get-release-notes
 with:
   changelog-path: ./CHANGELOG.md # Optional
   version: v1.2.1-beta.3 # Required
+
+...
+
+# An example of how to access the output
+
+sample: ${{ steps.get-release-notes.outputs.release-notes }}
+
 ```
