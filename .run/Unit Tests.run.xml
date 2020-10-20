@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="All Tests" type="JavaScriptTestRunnerJest">
+  <configuration default="false" name="Unit Tests" type="JavaScriptTestRunnerJest">
     <config-file value="$PROJECT_DIR$/jest.config.js" />
     <node-interpreter value="project" />
     <node-options value="" />
