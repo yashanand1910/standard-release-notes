@@ -24,7 +24,7 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 ### Example
 
 ```yaml
-# Get the release notes. Set a convenient 'id' for accessing later.
+# Get the release notes. Set a convenient 'id' for accessing later
 
 uses: actions/standard-release-notes@latest
 id: get_release_notes
