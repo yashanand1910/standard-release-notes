@@ -11,3 +11,8 @@ jobs:
        with:
          token: ${{ secrets.GITHUB_TOKEN }}
          release-type: node
+     - uses: EndBug/latest-tag@latest
+       with:
+         description: This tag always points to the latest version
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
