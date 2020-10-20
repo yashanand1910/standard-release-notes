@@ -7,7 +7,7 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 
 ### Inputs
 
-- #### `changelog-path`
+- #### `changelog_path`
     - **Optional**
     - Path of the changelog file (relative to root). Default is `./CHANGELOG.md`.
 
@@ -17,7 +17,7 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 
 ### Outputs
 
-- #### `release-notes`
+- #### `release_notes`
     - The release notes for a version.
 
 ### Example
@@ -26,15 +26,15 @@ A **GitHub action** to extract only the notes from the latest tag from the chang
 # Get the release notes. Set a convenient 'id' for accessing later.
 
 uses: actions/standard-release-notes@latest
-id: get-release-notes
+id: get_release_notes
 with:
-  changelog-path: ./CHANGELOG.md # Optional
+  changelog_path: ./CHANGELOG.md # Optional
   version: v1.2.1-beta.3 # Required
 
 ...
 
 # An example of how to access the output
 
-sample: ${{ steps.get-release-notes.outputs.release-notes }}
+sample: ${{ steps.get_release_notes.outputs.release_notes }}
 
 ```

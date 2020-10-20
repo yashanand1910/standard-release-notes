@@ -9,7 +9,7 @@ const run = async () => {
   try {
 
     // Get inputs
-    const changelogPath = core.getInput('changelog-path');
+    const changelogPath = core.getInput('changelog_path');
     const version = core.getInput('version');
     console.info(`[input] Changelog path: ${changelogPath}`);
 

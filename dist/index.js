@@ -74,7 +74,7 @@ const run = async () => {
   try {
 
     // Get inputs
-    const changelogPath = core_default().getInput('changelog-path');
+    const changelogPath = core_default().getInput('changelog_path');
     const version = core_default().getInput('version');
     console.info(`[input] Changelog path: ${changelogPath}`);
 
