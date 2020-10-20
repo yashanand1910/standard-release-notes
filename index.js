@@ -1,15 +1,31 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+import {getReleaseNotesFromPath} from "./release-notes";
+import core from '@actions/core';
 
-try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}!`);
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
-} catch (error) {
+/**
+ * Run action
+ * @returns {Promise<void>}
+ */
+const run = async () => {
+  try {
+
+    // Get inputs
+    const changelogPath = core.getInput('changelog-path');
+    const version = core.getInput('version');
+    console.info(`[input] Changelog path: ${changelogPath}`);
+
+    // Process
+    const releaseNotes = await getReleaseNotesFromPath(changelogPath, version);
+    console.info(`[process] Release notes retrieved`);
+
+    // Set outputs
+    core.setOutput('release-notes', releaseNotes);
+
+  } catch (error) {
+
+    console.error(error.message);
     core.setFailed(error.message);
+
+  }
 }
+
+run().then();
