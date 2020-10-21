@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.3...v1.2.0) (2020-10-21)
+
+
+### Features
+
+* placeholder for first release ([ecbeca7](https://www.github.com/yashanand1910/standard-release-notes/commit/ecbeca7cc961acc489152cf97f9f737bed165306))
+* placeholder for first release ([c8e1a52](https://www.github.com/yashanand1910/standard-release-notes/commit/c8e1a52106f0183106cd28e41df5d087172cf2bd))
+
 ### [1.1.3](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.2...v1.1.3) (2020-10-20)
 
 
