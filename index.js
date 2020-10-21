@@ -17,7 +17,7 @@ const run = async () => {
   console.info(`[process] Release notes retrieved`);
 
   // Set outputs
-  core.setOutput('release-notes', releaseNotes);
+  core.setOutput('release_notes', releaseNotes);
 
 }
 
