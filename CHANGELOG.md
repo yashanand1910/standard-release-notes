@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.0...v1.2.0) (2020-10-21)
+
+
+### Features
+
+* support for processing github.ref directly ([a6406db](https://www.github.com/yashanand1910/standard-release-notes/commit/a6406db21694cdb198b18ddb4c03cd57dc94388c))
+
 ## [1.1.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.0.0...v1.1.0) (2020-10-21)
 
 
