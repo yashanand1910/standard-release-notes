@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.1](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.2.0...v1.2.1) (2020-10-21)
+
+
+### Bug Fixes
+
+* output id for release_notes ([2c5e7bf](https://www.github.com/yashanand1910/standard-release-notes/commit/2c5e7bf2af0a7f813310b55ff4558b0a65fa5619))
+
 ## [1.2.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.1.0...v1.2.0) (2020-10-21)
 
 
