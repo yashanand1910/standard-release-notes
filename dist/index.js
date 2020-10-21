@@ -60,7 +60,6 @@ const getReleaseNotesFromPath = async (path, version) => {
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __webpack_require__(186);
-var core_default = /*#__PURE__*/__webpack_require__.n(core);
 
 // CONCATENATED MODULE: ./index.js
 
@@ -71,29 +70,27 @@ var core_default = /*#__PURE__*/__webpack_require__.n(core);
  * @returns {Promise<void>}
  */
 const run = async () => {
-  try {
 
-    // Get inputs
-    const changelogPath = core_default().getInput('changelog_path');
-    const version = core_default().getInput('version');
-    console.info(`[input] Changelog path: ${changelogPath}`);
+  // Get inputs
+  const changelogPath = core.getInput('changelog_path');
+  const version = core.getInput('version');
+  console.info(`[input] Changelog path: ${changelogPath}`);
 
-    // Process
-    const releaseNotes = await getReleaseNotesFromPath(changelogPath, version);
-    console.info(`[process] Release notes retrieved`);
+  // Process
+  const releaseNotes = await getReleaseNotesFromPath(changelogPath, version);
+  console.info(`[process] Release notes retrieved`);
 
-    // Set outputs
-    core_default().setOutput('release-notes', releaseNotes);
+  // Set outputs
+  core.setOutput('release-notes', releaseNotes);
 
-  } catch (error) {
-
-    console.error(error.message);
-    core_default().setFailed(error.message);
-
-  }
 }
 
-run().then();
+run().catch((error) => {
+
+  console.error(error.message);
+  core.setFailed(error.message);
+
+});
 
 
 /***/ }),
@@ -540,35 +537,6 @@ module.exports = require("path");
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
