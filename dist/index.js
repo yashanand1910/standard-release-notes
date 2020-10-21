@@ -31,7 +31,7 @@ const extractReleaseNotes = (content, version) => {
   const match = content.match(regExp);
 
   if (!match) {
-    throw Error('Could not find release notes for specified version');
+    throw Error(`Could not find release notes for provided version ${version}`);
   }
 
   return match[1].trim();
@@ -41,21 +41,26 @@ const extractReleaseNotes = (content, version) => {
 /**
  * Get release notes from a file path
  * @param {string} path - Path to file
- * @param {string} version - e.g. v1.2.0-beta.2
+ * @param {string} version - e.g. v1.2.0-beta.3
  * @returns {Promise<string>} - Release notes
  */
-const getReleaseNotesFromPath = async (path, version) => {
+const extractReleaseNotesFromPath = async (path, version) => {
   try {
 
     const content = await external_fs_.promises.readFile(path, 'utf-8');
+    const sanitizedVersion = sanitizeVersion(version);
 
-    return extractReleaseNotes(content, version);
+    return extractReleaseNotes(content, sanitizedVersion);
 
   } catch (error) {
 
     throw new Error(`[get release notes] ${error.message}`);
 
   }
+}
+
+const sanitizeVersion = (version) => {
+  return version.replace('refs/tags/', '');
 }
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
@@ -77,7 +82,7 @@ const run = async () => {
   console.info(`[input] Changelog path: ${changelogPath}`);
 
   // Process
-  const releaseNotes = await getReleaseNotesFromPath(changelogPath, version);
+  const releaseNotes = await extractReleaseNotesFromPath(changelogPath, version);
   console.info(`[process] Release notes retrieved`);
 
   // Set outputs

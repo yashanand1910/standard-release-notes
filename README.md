@@ -12,7 +12,8 @@ A GitHub action to extract release notes for a version from the changelog genera
 
 - #### `version`
     - **Required**
-    - Name of the version in the changelog. (e.g. *v1.2.1-beta.3*)
+    - Name of the version in the changelog. (e.g. *v1.2.1-beta.3*).
+    - You can also provide the tag using `${{ github.ref }}`, if the workflow trigger is on push of tags.
 
 ### Outputs
 
@@ -28,7 +29,7 @@ uses: actions/standard-release-notes@latest
 id: get_release_notes
 with:
   changelog_path: ./CHANGELOG.md # Optional
-  version: v1.2.1-beta.3 # Required
+  version: ${{ github.ref }} # Required
 
 ...
 

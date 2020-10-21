@@ -1,4 +1,4 @@
-import { getReleaseNotesFromPath } from './release-notes';
+import { extractReleaseNotesFromPath } from './release-notes';
 import * as core from '@actions/core';
 
 /**
@@ -13,7 +13,7 @@ const run = async () => {
   console.info(`[input] Changelog path: ${changelogPath}`);
 
   // Process
-  const releaseNotes = await getReleaseNotesFromPath(changelogPath, version);
+  const releaseNotes = await extractReleaseNotesFromPath(changelogPath, version);
   console.info(`[process] Release notes retrieved`);
 
   // Set outputs

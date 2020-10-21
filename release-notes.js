@@ -16,7 +16,7 @@ export const extractReleaseNotes = (content, version) => {
   const match = content.match(regExp);
 
   if (!match) {
-    throw Error('Could not find release notes for specified version');
+    throw Error(`Could not find release notes for provided version ${version}`);
   }
 
   return match[1].trim();
@@ -26,19 +26,24 @@ export const extractReleaseNotes = (content, version) => {
 /**
  * Get release notes from a file path
  * @param {string} path - Path to file
- * @param {string} version - e.g. v1.2.0-beta.2
+ * @param {string} version - e.g. v1.2.0-beta.3
  * @returns {Promise<string>} - Release notes
  */
-export const getReleaseNotesFromPath = async (path, version) => {
+export const extractReleaseNotesFromPath = async (path, version) => {
   try {
 
     const content = await fs.readFile(path, 'utf-8');
+    const sanitizedVersion = sanitizeVersion(version);
 
-    return extractReleaseNotes(content, version);
+    return extractReleaseNotes(content, sanitizedVersion);
 
   } catch (error) {
 
     throw new Error(`[get release notes] ${error.message}`);
 
   }
+}
+
+export const sanitizeVersion = (version) => {
+  return version.replace('refs/tags/', '');
 }
