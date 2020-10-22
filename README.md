@@ -25,7 +25,7 @@ A GitHub action to extract release notes for a version from the changelog genera
 ```yaml
 # Get the release notes. Set a convenient 'id' for accessing later
 
-uses: actions/standard-release-notes@latest
+uses: yashanand1910/standard-release-notes@v1.2.1
 id: get_release_notes
 with:
   changelog_path: ./CHANGELOG.md # Optional
