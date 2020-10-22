@@ -3,103 +3,6 @@ module.exports =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 603:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(747);
-
-// CONCATENATED MODULE: ./release-notes.js
-
-
-/**
- * Extract release notes from any multi-line string
- * @param {string} content
- * @param {string} version
- * @returns {*}
- */
-const extractReleaseNotes = (content, version) => {
-
-  version = version.replace(/^v/, '');
-  const regExp = new RegExp(
-    `## v?\\[?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### \\[?[0-9]+\\.|($(?![\r\n])))`,
-    'ms'
-  );
-  const match = content.match(regExp);
-
-  if (!match) {
-    throw Error(`Could not find release notes for provided version ${version}`);
-  }
-
-  return match[1].trim();
-
-}
-
-/**
- * Get release notes from a file path
- * @param {string} path - Path to file
- * @param {string} version - e.g. v1.2.0-beta.3
- * @returns {Promise<string>} - Release notes
- */
-const extractReleaseNotesFromPath = async (path, version) => {
-  try {
-
-    const content = await external_fs_.promises.readFile(path, 'utf-8');
-    const sanitizedVersion = sanitizeVersion(version);
-
-    return extractReleaseNotes(content, sanitizedVersion);
-
-  } catch (error) {
-
-    throw new Error(`[get release notes] ${error.message}`);
-
-  }
-}
-
-const sanitizeVersion = (version) => {
-  return version.replace('refs/tags/', '');
-}
-
-// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
-var core = __webpack_require__(186);
-
-// CONCATENATED MODULE: ./index.js
-
-
-
-/**
- * Run action
- * @returns {Promise<void>}
- */
-const run = async () => {
-
-  // Get inputs
-  const changelogPath = core.getInput('changelog_path');
-  const version = core.getInput('version');
-  console.info(`[input] Changelog path: ${changelogPath}`);
-
-  // Process
-  const releaseNotes = await extractReleaseNotesFromPath(changelogPath, version);
-  console.info(`[process] Release notes retrieved`);
-
-  // Set outputs
-  core.setOutput('release_notes', releaseNotes);
-
-}
-
-run().catch((error) => {
-
-  console.error(error.message);
-  core.setFailed(error.message);
-
-});
-
-
-/***/ }),
-
 /***/ 351:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -489,6 +392,103 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
+/***/ 797:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __webpack_require__(747);
+
+// CONCATENATED MODULE: ./src/release-notes.js
+
+
+/**
+ * Extract release notes from any multi-line string
+ * @param {string} content
+ * @param {string} version
+ * @returns {*}
+ */
+const extractReleaseNotes = (content, version) => {
+
+  version = version.replace(/^v/, '');
+  const regExp = new RegExp(
+    `## v?\\[?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### \\[?[0-9]+\\.|($(?![\r\n])))`,
+    'ms'
+  );
+  const match = content.match(regExp);
+
+  if (!match) {
+    throw Error(`Could not find release notes for provided version ${version}`);
+  }
+
+  return match[1].trim();
+
+}
+
+/**
+ * Get release notes from a file path
+ * @param {string} path - Path to file
+ * @param {string} version - e.g. v1.2.0-beta.3
+ * @returns {Promise<string>} - Release notes
+ */
+const extractReleaseNotesFromPath = async (path, version) => {
+  try {
+
+    const content = await external_fs_.promises.readFile(path, 'utf-8');
+    const sanitizedVersion = sanitizeVersion(version);
+
+    return extractReleaseNotes(content, sanitizedVersion);
+
+  } catch (error) {
+
+    throw new Error(`[get release notes] ${error.message}`);
+
+  }
+}
+
+const sanitizeVersion = (version) => {
+  return version.replace('refs/tags/', '');
+}
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __webpack_require__(186);
+
+// CONCATENATED MODULE: ./src/index.js
+
+
+
+/**
+ * Run action
+ * @returns {Promise<void>}
+ */
+const run = async () => {
+
+  // Get inputs
+  const changelogPath = core.getInput('changelog_path');
+  const version = core.getInput('version');
+  console.info(`[input] Changelog path: ${changelogPath}`);
+
+  // Process
+  const releaseNotes = await extractReleaseNotesFromPath(changelogPath, version);
+  console.info(`[process] Release notes retrieved`);
+
+  // Set outputs
+  core.setOutput('release_notes', releaseNotes);
+
+}
+
+run().catch((error) => {
+
+  console.error(error.message);
+  core.setFailed(error.message);
+
+});
+
+
+/***/ }),
+
 /***/ 747:
 /***/ ((module) => {
 
@@ -559,6 +559,6 @@ module.exports = require("path");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(603);
+/******/ 	return __webpack_require__(797);
 /******/ })()
 ;

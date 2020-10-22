@@ -1,4 +1,4 @@
-import { extractReleaseNotes, extractReleaseNotesFromPath } from "./release-notes";
+import { extractReleaseNotes, extractReleaseNotesFromPath } from "../src/release-notes";
 import {test} from '@jest/globals';
 
 const changelogContent = `
@@ -31,14 +31,14 @@ test('extract release notes from string 2', async () => {
 
 test('extract release notes from path 1', async () => {
 
-  const notes = await extractReleaseNotesFromPath('./test-changelog.md', '0.0.2-beta.2');
+  const notes = await extractReleaseNotesFromPath('tests/test-changelog.md', '0.0.2-beta.2');
   expect(notes).toBe('notes for specific version 1');
 
 });
 
 test('extract release notes from path 2', async () => {
 
-  const notes = await extractReleaseNotesFromPath('./test-changelog.md', 'refs/tags/0.0.2-beta.1');
+  const notes = await extractReleaseNotesFromPath('tests/test-changelog.md', 'refs/tags/0.0.2-beta.1');
   expect(notes).toBe('notes for specific version 2');
 
 });
