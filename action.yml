@@ -16,5 +16,5 @@ outputs:
   release_notes:
     description: The release notes for a version.
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'dist/index.js'
