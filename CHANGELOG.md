@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.2.1...v1.3.0) (2022-11-09)
+
+
+### Features
+
+* upgrade to node v16 ([3b7d4cd](https://www.github.com/yashanand1910/standard-release-notes/commit/3b7d4cd5c17633e0cf3ed2f42aec1c6ea180f6e2))
+
 ### [1.2.1](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.2.0...v1.2.1) (2020-10-21)
 
 
