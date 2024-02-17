@@ -23,7 +23,7 @@ A GitHub action to extract release notes for a specific version from changelog g
 ### Example
 
 ```yaml
-# Get the release notes. Set a convenient 'id' for accessing later
+# Get the release notes and set a convenient 'id' for accessing later
 
 uses: yashanand1910/standard-release-notes@v1.2.1
 id: get_release_notes
