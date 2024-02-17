@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/yashanand1910/standard-release-notes/compare/v1.3.0...v1.4.0) (2024-02-17)
+
+
+### Features
+
+* upgrade to node20 runtime ([43966e2](https://github.com/yashanand1910/standard-release-notes/commit/43966e203e53c3739cd7ae7f5c246bd125ce5ab4))
+
 ## [1.3.0](https://www.github.com/yashanand1910/standard-release-notes/compare/v1.2.1...v1.3.0) (2022-11-09)
 
 
