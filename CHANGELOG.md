@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/yashanand1910/standard-release-notes/compare/v1.4.0...v1.5.0) (2024-04-09)
+
+
+### Features
+
+* add support for versions like [vX.Y.Z] ([1153891](https://github.com/yashanand1910/standard-release-notes/commit/115389112edf77774ff10a3ee3299265c7623a2f)), closes [#35](https://github.com/yashanand1910/standard-release-notes/issues/35)
+
+
+### Bug Fixes
+
+* failing tests for v[X.Y.Z] case ([b2d35ce](https://github.com/yashanand1910/standard-release-notes/commit/b2d35ce815b1f61f32692456afc82de994f70974))
+
 ## [1.4.0](https://github.com/yashanand1910/standard-release-notes/compare/v1.3.0...v1.4.0) (2024-02-17)
 
 
