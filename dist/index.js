@@ -2847,7 +2847,7 @@ const extractReleaseNotes = (content, version) => {
 
   version = version.replace(/^v/, '');
   const regExp = new RegExp(
-    `## v?\\[?v?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### \\[?[0-9]+\\.|($(?![\r\n])))`,
+    `## v?\\[?v?${version}[^\\n]*\\n(.*?)(\\n##\\s|\\n### v?\\[?v?[0-9]+\\.|($(?![\r\n])))`,
     'ms'
   );
   const match = content.match(regExp);
